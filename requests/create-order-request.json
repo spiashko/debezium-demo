@@ -1,0 +1,16 @@
+{
+    "customerUuid" : "5b8859fa-9900-4001-baf4-67a131d425c2",
+    "orderDate" : "2019-01-31T12:13:01Z",
+    "lineItems" : [
+        {
+            "item" : "Debezium in Action",
+            "quantity" : 2,
+            "totalPrice" : 39.98
+        },
+        {
+            "item" : "Debezium for Dummies",
+            "quantity" : 1,
+            "totalPrice" : 29.99
+        }
+    ]
+}

@@ -1,0 +1,36 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="siarhei.piashko" id="changelog-001-message_log">
+        <sql>
+            create table message_log (
+            event_id UUID PRIMARY KEY,
+
+            time_of_receiving TIMESTAMP NOT NULL
+            );
+        </sql>
+        <rollback>
+            drop table message_log;
+        </rollback>
+    </changeSet>
+
+    <changeSet author="siarhei.piashko" id="changelog-001-shipment">
+        <sql>
+            create table shipment (
+            uuid UUID PRIMARY KEY,
+
+            order_uuid UUID NOT NULL,
+            customer_uuid UUID NOT NULL,
+            order_date TIMESTAMPTZ NOT NULL
+            );
+        </sql>
+        <rollback>
+            drop table shipment;
+        </rollback>
+    </changeSet>
+
+
+</databaseChangeLog>

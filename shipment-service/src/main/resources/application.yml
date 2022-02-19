@@ -1,0 +1,44 @@
+logging:
+  level:
+    org.springframework.kafka.listener: debug
+
+server:
+  port: 8081
+spring:
+  application:
+    name: shipment-app
+  cloud:
+    stream:
+      bindings:
+        orderEventConsumer-in-0:
+          destination: order.events
+          group: ${spring.application.name}
+      kafka:
+        binder:
+          brokers: localhost:9092
+        bindings:
+          orderEventConsumer-in-0:
+            consumer:
+              enable-dlq: true
+  datasource:
+    hikari:
+      auto-commit: false
+      poolName: DS_Main
+    username: shipment_service_user
+    password: shipment_service_password
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/shipment_service_db
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate.ddl-auto: none
+      hibernate.connection.provider_disables_autocommit: true
+      hibernate.dialect: org.hibernate.dialect.PostgreSQL10Dialect
+      hibernate.jdbc.time_zone: UTC
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_query_cache: false
+  liquibase:
+    change-log: classpath:liquibase/master.xml
+  mvc:
+    servlet:
+      load-on-startup: 1

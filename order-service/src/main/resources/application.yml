@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: order-service
+  datasource:
+    hikari:
+      auto-commit: false
+      poolName: DS_Main
+    username: order_service_user
+    password: order_service_password
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:postgresql://localhost:5432/order_service_db
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate.ddl-auto: none
+      hibernate.connection.provider_disables_autocommit: true
+      hibernate.dialect: org.hibernate.dialect.PostgreSQL10Dialect
+      hibernate.jdbc.time_zone: UTC
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_query_cache: false
+  liquibase:
+    change-log: classpath:liquibase/master.xml
+  mvc:
+    servlet:
+      load-on-startup: 1
