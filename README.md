@@ -8,10 +8,10 @@ using spring cloud streams
 Start all components:
 
 ```console
-$ docker-compose up --build
+$ docker compose up -d
 ```
 
-This executes all configurations set forth by the `docker-compose.yaml` file.
+Start services in IDE or via `mvn spring-boot:run` in each service folder
 
 It's important to note that sometimes the order or shipment service may fail to start if the dependent database takes
 longer than expected to initialize. If that happens, simply re-execute the command again and it will start the remaining
